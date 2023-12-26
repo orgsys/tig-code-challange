@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#d0ff00",
+    "titleBar.activeForeground": "#000000"
+  },
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": { "path": "C:\\Program Files\\Git\\bin\\bash.exe" }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
