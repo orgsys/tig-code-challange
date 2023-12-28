@@ -52,5 +52,5 @@
     "no-console": "warn",
     "@typescript-eslint/no-unused-vars": "warn"
   },
-  "ignorePatterns": ["**/fragment-matching.ts"]
+  "ignorePatterns": ["src/__generated__/fragment-masking.ts"]
 }
