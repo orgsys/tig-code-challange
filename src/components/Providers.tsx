@@ -4,6 +4,8 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { colors } from "../config/theme";
 
 const client = new ApolloClient({
   uri: "https://fe-coding-test-o6yezgstiq-km.a.run.app/graphql",
@@ -13,8 +15,14 @@ const client = new ApolloClient({
   },
 });
 
+const theme = extendTheme({ colors });
+
 const Providers = ({ children }: { children: React.ReactNode }) => {
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return (
+    <ApolloProvider client={client}>
+      <ChakraProvider theme={theme}>{children}</ChakraProvider>
+    </ApolloProvider>
+  );
 };
 
 export default Providers;

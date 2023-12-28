@@ -7,8 +7,6 @@ const EnvironmentCheck = ({ children }: { children: React.ReactNode }) => {
     (envVar) => !(envVar in process.env)
   );
 
-  console.log("missingEnvs:", missingEnvs);
-
   return (
     <>
       {missingEnvs.length > 0 ? (
