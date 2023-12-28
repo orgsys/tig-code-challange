@@ -1,5 +1,5 @@
 import { ArrowUpDownIcon } from '@chakra-ui/icons';
-import { IconButton, Stack } from '@chakra-ui/react';
+import { IconButton, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const TableHeadLabelSortButton = ({
@@ -11,7 +11,7 @@ const TableHeadLabelSortButton = ({
 }) => {
   return (
     <Stack direction='row' alignItems='center'>
-      <text>{label}</text>
+      <Text>{label}</Text>
       <IconButton
         size='xxs'
         p='0px'

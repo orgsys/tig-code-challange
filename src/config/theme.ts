@@ -12,7 +12,7 @@ export const theme = extendTheme({
   components: {
     Table: {
       variants: {
-        'shipment-table': {
+        'simple-data': {
           table: {
             bg: 'white',
             borderColor: 'blue',

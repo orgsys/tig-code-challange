@@ -4,8 +4,10 @@ import { ShipmentsQuery } from '../../__generated__/graphql';
 import {
   Table,
   TableContainer,
+  Tag,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
@@ -19,22 +21,20 @@ const ShipmentTable = ({
 }) => {
   return (
     <TableContainer>
-      <Table variant='shipment-table'>
+      <Table variant='simple-data'>
         <Thead>
           <Tr>
-            <Th width={300}>
+            <Th width={200}>
               <TableHeadLabelSortButton
                 label='Shipment'
                 sortAreaLabel='Sort by shipment ID'
               />
             </Th>
             <Th>
-              <Th width={300}>
-                <TableHeadLabelSortButton
-                  label='Status'
-                  sortAreaLabel='Sort by shipment status'
-                />
-              </Th>
+              <TableHeadLabelSortButton
+                label='Status'
+                sortAreaLabel='Sort by shipment status'
+              />
             </Th>
           </Tr>
         </Thead>
@@ -42,8 +42,15 @@ const ShipmentTable = ({
           {data &&
             data.shipments.map((shipment) => (
               <Tr key={shipment.id}>
-                <Td>{shipment.trackingId}</Td>
-                <Td>{shipment.status}</Td>
+                <Td>
+                  <Text fontSize='large' fontWeight="500">{shipment.trackingId}</Text>
+                  <Text fontSize='small' fontWeight="500" color='gray'>
+                    Updated: 123123{' '}
+                  </Text>
+                </Td>
+                <Td>
+                  <Tag variant="outline" py="8px" px="16px" colorScheme="orange">{shipment.status}</Tag>
+                </Td>
               </Tr>
             ))}
         </Tbody>
