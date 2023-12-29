@@ -1,8 +1,15 @@
 import React from 'react';
 
-const envVars = ['REACT_APP_GRAPHQL_HEADER'];
+const envVars = [
+  'REACT_APP_GRAPHQL_HEADER',
+  'REACT_APP_GRAPHQL_URI',
+];
 
-const EnvironmentCheck = ({ children }: { children: React.ReactNode }) => {
+const EnvironmentCheck = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const missingEnvs = envVars.filter(
     (envVar) => !(envVar in process.env)
   );

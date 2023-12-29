@@ -1,6 +1,5 @@
 import { ArrowUpDownIcon } from '@chakra-ui/icons';
 import { IconButton, Stack, Text } from '@chakra-ui/react';
-import React from 'react';
 
 const TableHeadLabelSortButton = ({
   label,

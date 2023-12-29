@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
 
 export const theme = extendTheme({
+  colors: {
+    delivered: 'green',
+    unknown: 'orange',
+  },
   styles: {
     global: {
       body: {
@@ -15,7 +19,6 @@ export const theme = extendTheme({
         'simple-data': {
           table: {
             bg: 'white',
-            borderColor: 'blue',
             borderRadius: '10px',
           },
           th: {

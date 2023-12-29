@@ -8,7 +8,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../config/theme';
 
 const client = new ApolloClient({
-  uri: 'https://fe-coding-test-o6yezgstiq-km.a.run.app/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_URI!,
   cache: new InMemoryCache(),
   headers: {
     'x-token': process.env.REACT_APP_GRAPHQL_HEADER!,
