@@ -1,5 +1,3 @@
-import { ShipmentsQuery } from '../../__generated__/graphql';
-
 import {
   Table,
   TableContainer,
@@ -21,9 +19,9 @@ const tableRow = {
 };
 
 const ShipmentTable = ({
-  data,
+  shipments,
 }: {
-  data: ShipmentsQuery | undefined;
+  shipments: IShipment[] | undefined;
 }) => {
   const [selectedShipment, setSelectedShipment] =
     useState<IShipment>();
@@ -53,8 +51,8 @@ const ShipmentTable = ({
             </Tr>
           </Thead>
           <Tbody>
-            {data &&
-              data.shipments.map((shipment) => (
+            {shipments &&
+              shipments.map((shipment) => (
                 <Tr
                   key={shipment.id}
                   style={tableRow}

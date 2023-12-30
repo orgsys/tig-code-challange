@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 import ShipmentTable from './ShipmentsTable';
 import { Box } from '@chakra-ui/react';
 import LoadingErrorAlertWithRefetch from '../LoadingErrorAlertWithRefetch';
+import { useContext, useMemo } from 'react';
+import { ShipmentSortContext } from '../../contexts/ShipemtSortContextProvider';
 
 export interface IShipment {
   __typename?: 'Shipment';
@@ -31,11 +33,29 @@ const GET_SHIPMENTS = gql(/* GraphQL */ `
 
 const Shipments = () => {
   const { data, error, loading, refetch } = useQuery(GET_SHIPMENTS);
+  const { sortBy, sortDirection } = useContext(ShipmentSortContext);
+
+  const sortedShipments = useMemo(() => {
+    if (!data) return undefined;
+    if (!sortBy) return [...data.shipments];
+    return [...data.shipments].sort((elA, elB) =>
+      elA[sortBy === 'Shipment' ? 'trackingId' : 'status'] >
+      elB[sortBy === 'Shipment' ? 'trackingId' : 'status']
+        ? sortDirection === 'DESC'
+          ? -1
+          : 1
+        : sortDirection === 'DESC'
+          ? 1
+          : -1
+    );
+  }, [data, sortBy, sortDirection]);
 
   return (
     <Box padding='20px'>
       <LoadingErrorAlertWithRefetch error={error} refetch={refetch} />
-      {!loading && !error && <ShipmentTable data={data} />}
+      {!loading && !error && (
+        <ShipmentTable shipments={sortedShipments} />
+      )}
     </Box>
   );
 };

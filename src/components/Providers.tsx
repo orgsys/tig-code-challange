@@ -6,6 +6,7 @@ import {
 } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../config/theme';
+import ShipmentSortConextProvider from '../contexts/ShipemtSortContextProvider';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URI!,
@@ -18,7 +19,11 @@ const client = new ApolloClient({
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>{children}</ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <ShipmentSortConextProvider>
+          {children}
+        </ShipmentSortConextProvider>
+      </ChakraProvider>
     </ApolloProvider>
   );
 };

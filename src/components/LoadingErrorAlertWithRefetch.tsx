@@ -8,7 +8,6 @@ import {
   Button,
   HStack,
   Spacer,
-  Text,
   VStack,
 } from '@chakra-ui/react';
 import {
@@ -43,7 +42,7 @@ const LoadingErrorAlertWithRefetch = ({
             <Box>
               <HStack>
                 <AlertIcon />
-                <VStack alignItems="left">
+                <VStack alignItems='left'>
                   <AlertTitle>
                     Error getting data from server:
                   </AlertTitle>

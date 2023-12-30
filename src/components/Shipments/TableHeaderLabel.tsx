@@ -1,5 +1,7 @@
 import { ArrowUpDownIcon } from '@chakra-ui/icons';
 import { IconButton, Stack, Text } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { ShipmentSortContext } from '../../contexts/ShipemtSortContextProvider';
 
 const TableHeadLabelSortButton = ({
   label,
@@ -8,6 +10,14 @@ const TableHeadLabelSortButton = ({
   label: string;
   sortAreaLabel: string;
 }) => {
+  const { selectSortBy } = useContext(ShipmentSortContext);
+
+  const handleSelectSortBy = () => {
+    if ((label === 'Shipment') || (label === 'Status')) {
+      selectSortBy(label);
+    }
+  };
+
   return (
     <Stack direction='row' alignItems='center'>
       <Text>{label}</Text>
@@ -19,6 +29,7 @@ const TableHeadLabelSortButton = ({
         variant='link'
         aria-label={sortAreaLabel}
         icon={<ArrowUpDownIcon fontSize='xx-small' />}
+        onClick={handleSelectSortBy}
       />
     </Stack>
   );
