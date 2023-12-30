@@ -9,34 +9,46 @@ import {
   HStack,
   Spacer,
   Text,
+  VStack,
 } from '@chakra-ui/react';
-import { Exact, ShipmentsQuery } from '../__generated__/graphql';
+import {
+  Exact,
+  ShipmentsQuery,
+  TrEventQuery,
+} from '../__generated__/graphql';
 
 interface AlertWithRefetchProps {
   error: ApolloError | undefined;
   refetch: (
     variables?: Partial<Exact<{ [key: string]: never }>> | undefined
-  ) => Promise<ApolloQueryResult<ShipmentsQuery>>;
+  ) =>
+    | Promise<ApolloQueryResult<ShipmentsQuery>>
+    | Promise<ApolloQueryResult<TrEventQuery>>;
 }
 
-const AlertWithRefetch = ({
+const LoadingErrorAlertWithRefetch = ({
   error,
   refetch,
 }: AlertWithRefetchProps) => {
   return (
     <>
       {error && (
-        <Alert status='error'>
+        <Alert
+          status='error'
+          borderRadius='2px'
+          marginBottom={5}
+          width='100%'
+        >
           <HStack width='100%'>
             <Box>
               <HStack>
                 <AlertIcon />
-                <AlertTitle>
-                  Error getting data from server
-                </AlertTitle>
-                <AlertDescription>
-                  <Text>{error.message}</Text>
-                </AlertDescription>
+                <VStack alignItems="left">
+                  <AlertTitle>
+                    Error getting data from server:
+                  </AlertTitle>
+                  <AlertDescription>{error.message}</AlertDescription>
+                </VStack>
               </HStack>
             </Box>
             <Spacer />
@@ -50,4 +62,4 @@ const AlertWithRefetch = ({
   );
 };
 
-export default AlertWithRefetch;
+export default LoadingErrorAlertWithRefetch;

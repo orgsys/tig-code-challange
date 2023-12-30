@@ -11,46 +11,15 @@ import {
   HStack,
   Heading,
   IconButton,
-  Progress,
   Spacer,
-  Table,
-  Tbody,
-  Td,
-  Tr,
 } from '@chakra-ui/react';
 import AccordionButton from '../misc/AccordionButton';
-import StatusTag from '../misc/StatusTag';
-
-const shipmentLabelStyle = {
-  width: '180px',
-  verticalAlign: 'top',
-  color: 'gray',
-  fontWeight: '400',
-  fontSize: 'small',
-  padding: '0px',
-  paddingBottom: '16px',
-};
-
-const shipmentValueStyle = {
-  fontWeight: '500',
-  fontSize: 'small',
-  padding: '0px',
-  paddingBottom: '16px',
-};
+import { IShipment } from '../Shipments';
+import ShipmentDetails from './ShipmentDetails';
+import ShipmentTrackingHistory from './ShipmentTrackingHistory';
 
 interface ShipmentDrawerProps {
-  selectedShipment:
-    | {
-        __typename?: 'Shipment';
-        status: string;
-        id: string;
-        trackingId: string;
-        lastUpdate: string;
-        deliveredTime?: string | null;
-        deliveryAddress: string;
-        totalTransit: string;
-      }
-    | undefined;
+  selectedShipment: IShipment | undefined;
   onClose: () => void;
 }
 
@@ -64,7 +33,6 @@ const ShipmentDrawer = ({
       placement='right'
       onClose={onClose}
       size='lg'
-      // finalFocusRef={btnRef}
     >
       <DrawerOverlay />
       <DrawerContent>
@@ -90,104 +58,17 @@ const ShipmentDrawer = ({
             <AccordionItem>
               <AccordionButton>Shipment</AccordionButton>
               <AccordionPanel>
-                {selectedShipment && (
-                  <Table variant='unstyled' width='400px'>
-                    <Tbody>
-                      <Tr>
-                        <Td
-                          style={{
-                            ...shipmentLabelStyle,
-                            verticalAlign: 'center',
-                          }}
-                        >
-                          Status
-                        </Td>
-                        <Td style={shipmentValueStyle}>
-                          <StatusTag
-                            status={selectedShipment.status}
-                          />
-                        </Td>
-                      </Tr>
-                      {selectedShipment.deliveredTime && (
-                        <Tr>
-                          <Td style={shipmentLabelStyle}>
-                            Delivered time
-                          </Td>
-                          <Td style={shipmentValueStyle}>
-                            {new Date(
-                              selectedShipment.deliveredTime
-                            ).toLocaleString('en-AU', {
-                              timeStyle: 'short',
-                              dateStyle: 'medium',
-                            })}
-                          </Td>
-                        </Tr>
-                      )}
-                      <Tr>
-                        <Td
-                          style={shipmentLabelStyle}
-                          alignContent='baseline'
-                        >
-                          Delivery Address
-                        </Td>
-                        <Td
-                          style={shipmentValueStyle}
-                          alignItems='baseline'
-                        >
-                          {selectedShipment.deliveryAddress}
-                        </Td>
-                      </Tr>
-                      <Tr>
-                        <Td
-                          style={shipmentLabelStyle}
-                          alignContent='baseline'
-                        >
-                          Last updated
-                        </Td>
-                        <Td
-                          style={shipmentValueStyle}
-                          alignItems='baseline'
-                        >
-                          {new Date(
-                            selectedShipment.lastUpdate
-                          ).toLocaleString('en-AU', {
-                            timeStyle: 'short',
-                            dateStyle: 'medium',
-                          })}
-                        </Td>
-                      </Tr>
-                      <Tr>
-                        <Td
-                          style={shipmentLabelStyle}
-                          alignContent='baseline'
-                        >
-                          Transit time
-                        </Td>
-                        <Td
-                          style={shipmentValueStyle}
-                          alignItems='baseline'
-                        >
-                          {new Date(
-                            selectedShipment.totalTransit
-                          ).toLocaleString('en-AU', {
-                            timeStyle: 'short',
-                            dateStyle: 'medium',
-                          })}
-                        </Td>
-                      </Tr>
-                    </Tbody>
-                  </Table>
-                )}
+                <ShipmentDetails shipment={selectedShipment} />
               </AccordionPanel>
             </AccordionItem>
             <AccordionItem>
               <AccordionButton>Tracking History</AccordionButton>
               <AccordionPanel>
-                <Progress size='xs' isIndeterminate />
-                <br />
-                Shipment details view Shipment details view Shipment
-                details view Shipment details view Shipment details
-                view Shipment details view
+                {selectedShipment?.trackingId && (
+                  <ShipmentTrackingHistory
+                    trackingId={selectedShipment.trackingId}
+                  />
+                )}
               </AccordionPanel>
             </AccordionItem>
           </Accordion>

@@ -2,7 +2,18 @@ import { gql } from '../../__generated__';
 import { useQuery } from '@apollo/client';
 import ShipmentTable from './ShipmentsTable';
 import { Box } from '@chakra-ui/react';
-import AlertWithRefetch from '../AlertWithRefetch';
+import LoadingErrorAlertWithRefetch from '../LoadingErrorAlertWithRefetch';
+
+export interface IShipment {
+  __typename?: 'Shipment';
+  status: string;
+  id: string;
+  trackingId: string;
+  lastUpdate: string;
+  deliveredTime?: string | null;
+  deliveryAddress: string;
+  totalTransit: string;
+}
 
 const GET_SHIPMENTS = gql(/* GraphQL */ `
   query Shipments {
@@ -23,7 +34,7 @@ const Shipments = () => {
 
   return (
     <Box padding='20px'>
-      <AlertWithRefetch error={error} refetch={refetch} />
+      <LoadingErrorAlertWithRefetch error={error} refetch={refetch} />
       {!loading && !error && <ShipmentTable data={data} />}
     </Box>
   );

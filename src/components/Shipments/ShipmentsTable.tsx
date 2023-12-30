@@ -14,6 +14,7 @@ import ShipmentCell from './ShipmentCell';
 import StatusTag from '../misc/StatusTag';
 import { useState } from 'react';
 import ShipmentDrawer from '../ShipmentDrawer';
+import { IShipment } from '.';
 
 const tableRow = {
   cursor: 'pointer',
@@ -24,16 +25,8 @@ const ShipmentTable = ({
 }: {
   data: ShipmentsQuery | undefined;
 }) => {
-  const [selectedShipment, setSelectedShipment] = useState<{
-    __typename?: 'Shipment';
-    status: string;
-    id: string;
-    trackingId: string;
-    lastUpdate: string;
-    deliveredTime?: string | null;
-    deliveryAddress: string;
-    totalTransit: string;
-  }>();
+  const [selectedShipment, setSelectedShipment] =
+    useState<IShipment>();
 
   const handleClose = () => {
     setSelectedShipment(undefined);
