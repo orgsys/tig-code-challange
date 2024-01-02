@@ -6,32 +6,11 @@ import {
   StepSeparator,
   Stepper,
 } from '@chakra-ui/react';
-import { gql } from '../../__generated__';
 import { useQuery } from '@apollo/client';
 import LoadingErrorAlertWithRefetch from '../LoadingErrorAlertWithRefetch';
 import StatusSeverityIcon from './StatusSeverityIcon';
 import TrackingEventDetails from './TrackingEventDetails';
-
-export interface ITrackingEvent {
-  __typename?: 'TrackingEvent' | undefined;
-  id: string;
-  statusSeverity: string;
-  timestamp?: string | null | undefined;
-  location: string;
-  status: string;
-}
-
-const GET_TRACKING_EVENTS = gql(/* GraphQL */ `
-  query trEvent($trackingId: String!) {
-    trackingEvents(trackingId: $trackingId) {
-      id
-      statusSeverity
-      timestamp
-      location
-      status
-    }
-  }
-`);
+import { GET_TRACKING_EVENTS } from '../../api/trackingEvent';
 
 const ShipmentTrackingHistory = ({
   trackingId,

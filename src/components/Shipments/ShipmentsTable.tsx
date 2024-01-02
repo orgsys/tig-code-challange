@@ -12,7 +12,7 @@ import ShipmentCell from './ShipmentCell';
 import StatusTag from '../misc/StatusTag';
 import { useState } from 'react';
 import ShipmentDrawer from '../ShipmentDrawer';
-import { IShipment } from '.';
+import { IShipment } from '../../api/shipments';
 
 const tableRow = {
   cursor: 'pointer',

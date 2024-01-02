@@ -1,5 +1,5 @@
 import { Box, Divider, HStack, Spacer, StepDescription, StepTitle } from '@chakra-ui/react';
-import { ITrackingEvent } from './ShipmentTrackingHistory';
+import { ITrackingEvent } from '../../api/trackingEvent';
 
 interface TrackingEventDetailsProps {
   trackingEvent: ITrackingEvent;

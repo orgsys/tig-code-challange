@@ -1,7 +1,7 @@
 import { Table, Tbody } from '@chakra-ui/react';
-import { IShipment } from '../Shipments';
 import StatusTag from '../misc/StatusTag';
 import ShipmentDetailsTableRow from './ShipmentDetailsTableRow';
+import { IShipment } from '../../api/shipments';
 
 const ShipmentDetails = ({
   shipment,

@@ -14,9 +14,9 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import AccordionButton from '../misc/AccordionButton';
-import { IShipment } from '../Shipments';
 import ShipmentDetails from './ShipmentDetails';
 import ShipmentTrackingHistory from './ShipmentTrackingHistory';
+import { IShipment } from '../../api/shipments';
 
 interface ShipmentDrawerProps {
   selectedShipment: IShipment | undefined;
