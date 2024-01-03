@@ -19,7 +19,7 @@
     "watch": "graphql-codegen -w",
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npx cypress run --component",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
