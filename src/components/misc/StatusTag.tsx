@@ -8,7 +8,7 @@ const StatusTag = ({ status }: { status: string }) => {
     case 'Delivered':
       statusColor = colors.delivered;
       break;
-    case 'In-Transit':
+      case 'In-Transit':
       statusColor = colors.inTransit;
       break;
     case 'Manifested':
