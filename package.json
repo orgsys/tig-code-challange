@@ -19,7 +19,10 @@
     "watch": "graphql-codegen -w",
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "test": "npx cypress run --component",
+    "test:unit": "npx cypress run --component",
+    "start:test-server": "set PORT=3030 && react-scripts start",
+    "cy:run": "cypress run",
+    "test:e2e": "start-test start:test-server http://localhost:3030 cy:run",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
@@ -67,6 +70,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.1.1",
+    "start-server-and-test": "^2.0.3",
     "typescript": "^5.3.3"
   }
 }

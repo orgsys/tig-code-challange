@@ -14,20 +14,21 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 import { mount } from 'cypress/react18';
-import { ChakraProvider, ThemeProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../../src/config/theme';
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
+
 declare global {
   namespace Cypress {
     interface Chainable {
