@@ -1,46 +1,26 @@
 # Getting started
 
 1. Clone the ropsitory to your local
-2. run ### 'yarn install' to install the dependencies
+2. Run `yarn install` to install the dependencies
+3. Add  `.env.local` evironment file in the root folder with variables:
+	`REACT_APP_GRAPHQL_URI=https://fe-coding-test-o6yezgstiq-km.a.run.app/graphql`
+	`REACT_APP_GRAPHQL_HEADER=fe-test-2023`
+	`BROWSER=none`
 
+# Run the React app
 
-In the project directory, you can run:
+1. Run `yarn start` to start the app on `localhost:3030`
 
-### `yarn start`
+# Run tests
+1. Stop react app server if running
+2. Run `yarn test:unit` for component testing
+3. Run `yarn test:e2e` for end to end test
+4. Run `yarn test` for both, component and end to end tests
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Notes
+1. Only some component tests has been implemented
+2. E2E tests are covering just some of the functionality of the app
+3. The app will check for env variables and will show an error and a list of missing variables if some vars are missing
+4. The API side graphql errors are handled with an alert and a 'retry' button
+5. Approximate colors and object sizes were selected from the provided UI design
+6. Approximate font sizes and weighs were selected from the provided UI design
