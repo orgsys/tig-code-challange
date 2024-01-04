@@ -1,4 +1,7 @@
-# Getting started
+# Preview the app on GH pages
+https://orgsys.github.io/tig-code-challange/
+
+# Getting started with repo
 
 1. Clone the ropsitory to your local
 2. Run `yarn install` to install the dependencies
