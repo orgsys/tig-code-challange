@@ -27,7 +27,9 @@
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json} && tsc --noemit",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
