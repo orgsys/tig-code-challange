@@ -11,7 +11,7 @@ const ShipmentDetails = ({
   return (
     <>
       {shipment && (
-        <Table variant='unstyled' width='400px'>
+        <Table variant='unstyled' width='400px' data-cy='shipments-details-table'>
           <Tbody>
             <ShipmentDetailsTableRow
               label='Status'

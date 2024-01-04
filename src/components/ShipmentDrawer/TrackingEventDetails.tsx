@@ -1,4 +1,11 @@
-import { Box, Divider, HStack, Spacer, StepDescription, StepTitle } from '@chakra-ui/react';
+import {
+  Box,
+  Divider,
+  HStack,
+  Spacer,
+  StepDescription,
+  StepTitle,
+} from '@chakra-ui/react';
 import { ITrackingEvent } from '../../api/trackingEvent';
 
 interface TrackingEventDetailsProps {
@@ -9,7 +16,7 @@ const TrackingEventDetails = ({
   trackingEvent,
 }: TrackingEventDetailsProps) => {
   return (
-    <Box width='100%'>
+    <Box width='100%' data-cy='tracking-events-view'>
       <HStack>
         <Box flexShrink='0'>
           <StepTitle>{trackingEvent.status}</StepTitle>
