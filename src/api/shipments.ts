@@ -1,7 +1,7 @@
 import { gql } from '../__generated__';
 
 export interface IShipment {
-  __typename?: 'Shipment';
+  __typename?: 'Shipment' | string;
   status: string;
   id: string;
   trackingId: string;
